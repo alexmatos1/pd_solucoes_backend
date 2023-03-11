@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
 {
+    public function listEmployee(){
+        
+        $employee = DB::select('SELECT * FROM employee');
+
+        return $employee;
+    }
+
     public function addEmployee(Request $request){       
 
         $name = $request['name'];
@@ -29,13 +36,11 @@ class EmployeeController extends Controller
         }
     }
 
-    public function squadTime(Request $request){
-
-        $squadId = $request['squadId']; 
+    public function squadTime($id){        
 
         $totalSquad = DB::select("SELECT SUM(rp.spentHours) as squadHours FROM report rp
             inner join employee em on em.id = rp.employeeId
-            where em.squadId =:squadId", ['squadId' => $squadId]);
+            where em.squadId =:squadId", ['squadId' => $id]);
 
         return $totalSquad;
 

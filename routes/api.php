@@ -26,7 +26,9 @@ Route::get('/squad', [SquadController::class, 'listSquad']);
 Route::post('/squad', [SquadController::class, 'addSquad']);
 
 Route::post('/employee', [EmployeeController::class, 'addEmployee']);
-Route::post('/squadTime', [EmployeeController::class, 'squadTime']);
+Route::get('/employee', [EmployeeController::class, 'listEmployee']);
+Route::post('/squadTime/{id}', [EmployeeController::class, 'squadTime']);
 Route::post('/employeeTime', [EmployeeController::class, 'employeeTime']);
 
 Route::post('/report', [ReportController::class, 'addReport']);
+Route::post('/reportList/{id}/{dataInicio}/{dataFim}', [ReportController::class, 'listReport']);

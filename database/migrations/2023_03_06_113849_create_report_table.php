@@ -22,7 +22,7 @@ class CreateReportTable extends Migration
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
             $table->integer('spentHours');
-            $table->timestamps();
+            $table->date('createdAt');
         });
     }
 
